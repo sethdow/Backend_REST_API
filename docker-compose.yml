@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: . # This is our current directory
+    ports:
+      - "8000:8000" #port 8000 from the host to 8000 on our image
+      #automatically update docker based on changes you make locally
+    volumes:
+      - ./app:/app #maps app directory in our project to the app directory on the docker image
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
+    #This greater than symbol is used to break up the following command
+      #command is used to run our application in our docker container
+      # the following command tells python to run the file on the 0.0.0.0 server through port 8000
