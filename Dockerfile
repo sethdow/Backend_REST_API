@@ -1,4 +1,4 @@
-FROM 3.7-alpine
+FROM python:3.7-alpine
 MAINTAINER Seth Dow
 
 ENV PYTHONUNBUFFERED 1
@@ -7,3 +7,7 @@ RUN pip install -r /requirements.txt
 
 RUN mkdir /app
 WORKDIR /app
+COPY ./app /app
+
+RUN adduser -D user
+USER user
